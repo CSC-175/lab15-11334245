@@ -12,6 +12,23 @@ double factorial(int);
 * reference parameters referencing variables in the main function. *
 ********************************************************************/
 
+  void getInfo (int&pickFrom, int&numPicks) {
+  do {
+    cout << "How many balls (1-12) are in the pool to pick from? ";
+    cin >> pickFrom;
+    if (pickFrom < 1 || pickFrom > 12) {
+      cout << "Input Error! There must be between 1 and 12 balls." << endl;
+    }
+  } while (pickFrom > 1 || pickFrom < 12);
+  do {
+    cout << "How many balls (1-" << pickFrom << ") will be drawn? ";
+    cin >> numPicks;
+    if (numPicks < 1 || numPicks > pickFrom) {
+      cout << "Input Error!" << endl;
+    }
+  } while (numPicks < 1 || numPicks > pickFrom);
+    }
+
 
 
 /*******************************************************************
@@ -25,11 +42,17 @@ double factorial(int);
 * multiplying two factorials together. This is done to prevent any *
 * intermediate result becoming so large that it causes overflow.   *
 ********************************************************************/
-
-
-/*******************************************************************
-* factorial                                                        *
-* This function computes factorials recursively.                   *
-*******************************************************************/
+double computeWays(int pickFrom, int numPicks) {
+  return double(factorial(pickFrom) / (factorial(numPicks) * factorial(pickFrom-numPicks)));
+}
+  /*******************************************************************
+  * factorial                                                        *
+  * This function computes factorials recursively.                   *
+  *******************************************************************/
+  double factorial(int num) {
+    if (num <=1)
+      return 1;
+    return num * factorial(num - 1);
+  }
 
 

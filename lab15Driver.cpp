@@ -3,6 +3,7 @@
 // by the lottery organizers. It uses three functions.
 # include <iostream>
 # include "./lab15.cpp"
+
 using namespace std;
 
 int main()
